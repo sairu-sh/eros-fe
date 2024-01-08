@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EROMANCE</title>
+    <link rel="stylesheet" href="./src/style/style.css" />
+  </head>
+  <body>
+    <div class="form-control">
+      <div class="form-left">
+        <img src="./public/assets/images/eros.svg" alt="" class="eros" />
+      </div>
+      <div class="divider"></div>
+      <div class="form-right">
+        <form class="signup-form form hidden">
+          <h1>Create Account</h1>
+
+          <input
+            type="text"
+            id="full-name"
+            name="full-name"
+            class="full-name"
+            placeholder="Full Name"
+            required
+          />
+
+          <input
+            type="text"
+            id="email"
+            name="email"
+            class="email"
+            placeholder="Email"
+            required
+          />
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="password"
+            placeholder="Password"
+            required
+          />
+
+          <button class="signup btn" type="submit" id="signup-btn">
+            Sign up
+          </button>
+
+          <p>Already have an account? <a href="#">log in</a> instead.</p>
+        </form>
+
+        <form action="" class="login-form form">
+          <h1>Log In</h1>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            class="email"
+            placeholder="Email"
+            required
+          />
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="password"
+            placeholder="Password"
+            required
+          />
+          <button class="login btn" type="submit" id="login-btn">Log in</button>
+          <p>Don't have an account? <a href="#">Register</a> now.</p>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
