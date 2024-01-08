@@ -1,3 +1,4 @@
+import "../../style/style.css";
 import axios from "axios";
 
 const signupForm = document.getElementById("signup-form");
