@@ -10,11 +10,15 @@
   <body>
     <div class="form-control">
       <div class="form-left">
-        <img src="./public/assets/images/eros.svg" alt="" class="eros" />
+        <img
+          src="./../../../public/assets/images/eros.svg"
+          alt=""
+          class="eros"
+        />
       </div>
       <div class="divider"></div>
       <div class="form-right">
-        <form class="signup-form form hidden">
+        <form class="signup-form form" id="signup-form">
           <h1>Create Account</h1>
 
           <input
@@ -28,7 +32,16 @@
 
           <input
             type="text"
-            id="email"
+            id="username-signup"
+            name="username"
+            class="username"
+            placeholder="Username"
+            required
+          />
+
+          <input
+            type="text"
+            id="email-signup"
             name="email"
             class="email"
             placeholder="Email"
@@ -37,7 +50,7 @@
 
           <input
             type="password"
-            id="password"
+            id="password-signup"
             name="password"
             class="password"
             placeholder="Password"
@@ -48,30 +61,10 @@
             Sign up
           </button>
 
-          <p>Already have an account? <a href="#">log in</a> instead.</p>
-        </form>
-
-        <form action="" class="login-form form">
-          <h1>Log In</h1>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            class="email"
-            placeholder="Email"
-            required
-          />
-
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="password"
-            placeholder="Password"
-            required
-          />
-          <button class="login btn" type="submit" id="login-btn">Log in</button>
-          <p>Don't have an account? <a href="#">Register</a> now.</p>
+          <p>
+            Already have an account?
+            <a href="./../login/" id="login-anchor">log in</a> instead.
+          </p>
         </form>
       </div>
     </div>
