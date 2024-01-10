@@ -1,6 +1,9 @@
 .form-control {
   width: 70%;
   position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   background-color: #fcf6e6;
   justify-content: space-between;

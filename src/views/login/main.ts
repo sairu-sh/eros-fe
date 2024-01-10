@@ -12,7 +12,6 @@ loginForm?.addEventListener("submit", async (e) => {
   const email = (document.getElementById("email") as HTMLInputElement).value;
   const password = (document.getElementById("password") as HTMLInputElement)
     .value;
-  console.log(typeof password);
 
   try {
     const response = await http({

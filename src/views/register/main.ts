@@ -32,7 +32,11 @@ signupForm?.addEventListener("submit", async (e) => {
       },
       method: "POST",
     });
-    console.log(response);
+    if (response && response.data && response.data.id) {
+      const userId = response.data.id;
+
+      window.location.href = `/views/registrationform/?userId=${userId}`;
+    }
   } catch (error) {
     console.error(error);
   }
