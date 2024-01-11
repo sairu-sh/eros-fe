@@ -7,8 +7,8 @@ const registrationForm = document.getElementById(
 
 const interestDiv = document.getElementById("interests") as HTMLDivElement;
 
-const urlParams = new URLSearchParams(window.location.search);
-const uid = urlParams.get("userId");
+// const urlParams = new URLSearchParams(window.location.search);
+// const uid = urlParams.get("userId");
 
 const http = axios.create({
   baseURL: "http://localhost:8000/",
@@ -86,9 +86,24 @@ registrationForm?.addEventListener("submit", async (e) => {
 
   const interests = interestIdArray;
 
+  console.log(
+    bio,
+    dob,
+    gender,
+    prefered_gender,
+    college,
+    prefered_age,
+    city,
+    country,
+    interests
+  );
+
   try {
     const response = await http({
-      url: `/create-details/${uid}`,
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      url: `/create-details/`,
       method: "POST",
       data: {
         bio,
@@ -97,14 +112,15 @@ registrationForm?.addEventListener("submit", async (e) => {
         prefered_gender,
         college,
         prefered_age,
-        uid,
         city,
         country,
         interests,
       },
     });
     if (response.status === 200) {
-      window.location.href = "./../dashboard/";
+
+      window.location.href = "/views/dashboard/";
+
     }
   } catch (e) {}
 });

@@ -22,7 +22,11 @@ loginForm?.addEventListener("submit", async (e) => {
       },
       method: "POST",
     });
-    console.log(response);
+    if (response.status === 200) {
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
+      window.location.href = "/";
+    }
   } catch (error) {
     console.error(error);
   }
