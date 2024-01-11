@@ -98,6 +98,8 @@ registrationForm?.addEventListener("submit", async (e) => {
         interests,
       },
     });
-    console.log(response);
+    if (response.status === 200) {
+      window.location.href = "./../dashboard/";
+    }
   } catch (e) {}
 });
