@@ -118,7 +118,9 @@ registrationForm?.addEventListener("submit", async (e) => {
       },
     });
     if (response.status === 200) {
+
       window.location.href = "/views/dashboard/";
+
     }
   } catch (e) {}
 });
