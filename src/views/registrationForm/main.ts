@@ -88,6 +88,9 @@ registrationForm?.addEventListener("submit", async (e) => {
 
   try {
     const response = await http({
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
       url: `/create-details/${uid}`,
       method: "POST",
       data: {

@@ -1,3 +1,4 @@
+import { access } from "fs";
 import "../../style/style.css";
 import axios from "axios";
 
@@ -33,9 +34,18 @@ signupForm?.addEventListener("submit", async (e) => {
       method: "POST",
     });
     if (response && response.data && response.data.id) {
-      const userId = response.data.id;
+      const response = await http({
+        url: "/login",
+        method: "POST",
+        data: {
+          email,
+          password,
+        },
+      });
+      localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("refreshToken", response.data.refreshToken);
 
-      window.location.href = `/views/registrationform/?userId=${userId}`;
+      window.location.href = `/views/registrationform/`;
     }
   } catch (error) {
     console.error(error);
