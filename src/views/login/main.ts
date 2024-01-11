@@ -25,7 +25,7 @@ loginForm?.addEventListener("submit", async (e) => {
     if (response.status === 200) {
       localStorage.setItem("accessToken", response.data.accessToken);
       localStorage.setItem("refreshToken", response.data.refreshToken);
-      window.location.href = "/";
+      window.location.href = "/views/dashboard/";
     }
   } catch (error) {
     console.error(error);
