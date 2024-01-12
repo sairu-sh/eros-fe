@@ -4,9 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./../../style/style.css" />
   </head>
   <body>
-    <div id="app">Hi from dashboard</div>
+    <nav>
+      <div class="logo">EROS</div>
+      <div class="nav-bar">
+        <ul>
+          <li class="active">
+            <a href="#"
+              ><img src="./../../assets/images/world.png" alt="profile"
+            /></a>
+          </li>
+          <li>
+            <a href="#"
+              ><img src="./../../assets/images/request.png" alt="request"
+            /></a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./../../assets/images/matches.png" alt="chat"
+            /></a>
+          </li>
+          <li>
+            <a href="/views/chat">
+              <img src="./../../assets/images/chat.png" alt="chat"
+            /></a>
+          </li>
+          <li>
+            <a href="/views/profile"
+              ><img src="./../../assets/images/profile.png" alt="profile"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="hero">
+      <div class="profiles" id="profiles">
+        <div class="profile">
+          <img src="./../../assets/images/eros.svg" alt="eros" />
+          <p>Sairush Tamang &nbsp;22</p>
+        </div>
+        <div class="profile">
+          <p>Sairush Tamang 22</p>
+        </div>
+        <div class="profile">
+          <p>Sairush Tamang 22</p>
+        </div>
+        <div class="profile">
+          <p>Sairush Tamang 22</p>
+        </div>
+        <div class="profile">
+          <p>Sairush Tamang 22</p>
+        </div>
+        <div class="profile">
+          <p>Sairush Tamang 22</p>
+        </div>
+        <div class="profile"></div>
+        <div class="profile"></div>
+        <div class="profile"></div>
+      </div>
+    </div>
+    <div class="selected-profile" id="selected-profile">
+      <div class="empty-profile">
+        <img src="./../../assets/images/cupid.png" alt="cupid" />
+        <p>
+          Select a profile, <br />let cupid's arrow ignite the flame of love!
+        </p>
+      </div>
+    </div>
     <script type="module" src="./main.ts"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </body>
 </html>

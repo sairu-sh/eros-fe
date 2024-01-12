@@ -86,18 +86,6 @@ registrationForm?.addEventListener("submit", async (e) => {
 
   const interests = interestIdArray;
 
-  console.log(
-    bio,
-    dob,
-    gender,
-    prefered_gender,
-    college,
-    prefered_age,
-    city,
-    country,
-    interests
-  );
-
   try {
     const response = await http({
       headers: {
@@ -118,9 +106,7 @@ registrationForm?.addEventListener("submit", async (e) => {
       },
     });
     if (response.status === 200) {
-
       window.location.href = "/views/dashboard/";
-
     }
   } catch (e) {}
 });
