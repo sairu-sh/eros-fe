@@ -1,4 +1,5 @@
 import "./../../style/style.css";
+import { IProfile } from "../../interfaces/profile.interface";
 import axios from "axios";
 
 if ("geolocation" in navigator) {
@@ -38,8 +39,63 @@ async function updateUserLocation(latitude: number, longitude: number) {
     });
     if (response.status === 200) {
       console.log("location updated successfully");
+      getProfiles();
     }
   } catch (e) {
     console.error("location update failed");
   }
+}
+
+async function getProfiles() {
+  try {
+    const profileList = await http({
+      url: "/get-profiles",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      method: "GET",
+    });
+
+    if (profileList.status === 200) {
+      const profiles: IProfile[] = profileList.data;
+      renderProfiles(profiles);
+    }
+  } catch (e) {}
+}
+
+function renderProfiles(profiles: IProfile[]) {
+  const profileContainer = document.getElementById("profiles");
+  profiles.forEach((profile) => {
+    const birthDate: Date = new Date(profile.dob);
+    const age = calculateAge(birthDate);
+
+    const profileElement = document.createElement("div");
+    profileElement.classList.add("profile");
+    profileElement.setAttribute("data-id", `${profile.uid}`);
+    const profileTag = document.createElement("p");
+    profileTag.innerHTML = `
+        <span class="main-text"
+        >${profile.fullname}<span style="margin-left: 20px">${age}</span></span
+      >
+      <br />
+      <span class="small-text">${Math.ceil(profile.distance)} km away</span>
+    `;
+    profileElement.appendChild(profileTag);
+    profileContainer?.appendChild(profileElement);
+  });
+}
+
+function calculateAge(birthDate: Date) {
+  const currentDate = new Date();
+  let age = currentDate.getFullYear() - birthDate.getFullYear();
+  const monthDiff = currentDate.getMonth() - birthDate.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && currentDate.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  return age;
 }

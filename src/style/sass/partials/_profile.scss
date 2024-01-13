@@ -7,14 +7,24 @@
   position: relative;
   overflow: hidden;
   background: #e96f6f;
+ cursor: pointer;
   p {
     position: absolute;
-    bottom: 5%;
+    bottom: 2%;
     left: 5%;
     font-size: 1.2rem;
     font-weight: 800;
-    color: black;
+    color: white;
     z-index: 1;
+    .main-text {
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .small-text {
+      font-size: 16px;
+      line-height: 1;
+    }
   }
   img {
     width: 100%;
@@ -28,12 +38,13 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 40%; /* Adjust the height of the gradient as needed */
+    height: 35%;
     background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.7) 100%
+      to top,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0) 100%
     );
+
     pointer-events: none;
   }
 }

@@ -77,8 +77,9 @@ registrationForm?.addEventListener("submit", async (e) => {
   const college = (document.getElementById("education") as HTMLInputElement)
     .value;
   const city = (document.getElementById("city") as HTMLInputElement).value;
-  const country = (document.getElementById("country") as HTMLInputElement)
-    .value;
+  const country = (
+    document.getElementById("country") as HTMLInputElement
+  ).value.toLowerCase();
 
   const prefered_age = Number(
     (document.getElementById("prefered-age") as HTMLInputElement).value
