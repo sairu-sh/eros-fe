@@ -603,9 +603,10 @@ nav .nav-bar ul li.active a::after {
 .selected-profile .profile-card .images img {
   width: 100%;
   object-fit: cover;
-}
-.selected-profile .profile-card .images img .hidden {
   display: none;
+}
+.selected-profile .profile-card .images img.active {
+  display: block;
 }
 
 .hero {

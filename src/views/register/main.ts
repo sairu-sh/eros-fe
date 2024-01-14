@@ -45,7 +45,7 @@ signupForm?.addEventListener("submit", async (e) => {
       localStorage.setItem("accessToken", response.data.accessToken);
       localStorage.setItem("refreshToken", response.data.refreshToken);
 
-      window.location.href = `/views/registrationform/`;
+      window.location.href = `/views/image-uploader/`;
     }
   } catch (error) {
     console.error(error);

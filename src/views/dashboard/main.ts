@@ -72,6 +72,9 @@ function renderProfiles(profiles: IProfile[]) {
     const profileElement = document.createElement("div");
     profileElement.classList.add("profile");
     profileElement.setAttribute("data-id", `${profile.uid}`);
+    const image = document.createElement("img");
+    image.src = `${profile.imageUrl}`;
+    profileElement.appendChild(image);
     const profileTag = document.createElement("p");
     profileTag.innerHTML = `
         <span class="main-text"

@@ -5,4 +5,5 @@ export interface IProfile {
   lat: number;
   long: number;
   distance: number;
+  imageUrl: string;
 }
