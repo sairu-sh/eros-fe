@@ -5,12 +5,98 @@
   width: 28%;
   max-width: 400px;
   height: 95vh;
-  border: 2px solid black;
+  border: 3px solid black;
   border-radius: 15px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  background-color: #d6dcf4;
   .empty-profile {
     text-align: center;
+    padding-top: 50%;
+    &.hidden {
+      display: none;
+    }
+  }
+  .profile-card {
+    overflow-y: scroll;
+    flex: 1;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: flex-start;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 100%;
+    }
+    &::-webkit-scrollbar-track {
+      background: #d6dcf4;
+      border-radius: 15px;
+      margin-block: 1.5rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #cdd5f3;
+      max-height: 50px;
+      border-radius: 15px;
+    }
+    div {
+      border-radius: 10px;
+      margin-bottom: 5px;
+      background-color: white;
+      margin-left: 5px;
+      padding-left: 15px;
+      .interests {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        gap: 10px;
+        p {
+          border-radius: 40px;
+          background-color: #eff1f3;
+          border: 2px solid gray;
+          padding: 5px 10px;
+        }
+      }
+    }
+    .name {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 8px;
+      border-radius: 0 0 10px 10px;
+      .request {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        cursor: pointer;
+        height: 30px;
+        width: 60px;
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+    }
+    .images {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 0;
+      img {
+        width: 100%;
+        object-fit: cover;
+        .hidden {
+          display: none;
+        }
+      }
+    }
   }
 }

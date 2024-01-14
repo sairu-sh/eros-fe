@@ -1,13 +1,12 @@
 nav {
-  border: 1px solid black;
+  // border: 1px solid black;
+  background-color: white;
   position: fixed;
   left: 0;
-  //   top: 20px;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
-  //   gap: 20%;
   width: 10%;
   height: 100vh;
   .logo {
@@ -32,7 +31,7 @@ nav {
         display: block;
         border-bottom: 2px solid black;
         width: 75px;
-        transition: width 0.3s;
+        transition: width 1s;
         position: absolute;
         left: 50%;
         bottom: 0;
