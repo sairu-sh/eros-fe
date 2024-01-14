@@ -8,4 +8,5 @@ export interface IDetails {
   gender: string;
   interests: string[];
   distance: number;
+  imageurls: string[];
 }

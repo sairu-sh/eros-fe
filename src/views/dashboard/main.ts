@@ -9,7 +9,6 @@ if ("geolocation" in navigator) {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
-      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
       updateUserLocation(latitude, longitude);
     },
     (error) => {
@@ -72,6 +71,9 @@ function renderProfiles(profiles: IProfile[]) {
     const profileElement = document.createElement("div");
     profileElement.classList.add("profile");
     profileElement.setAttribute("data-id", `${profile.uid}`);
+    const image = document.createElement("img");
+    image.src = `${profile.imageUrl}`;
+    profileElement.appendChild(image);
     const profileTag = document.createElement("p");
     profileTag.innerHTML = `
         <span class="main-text"

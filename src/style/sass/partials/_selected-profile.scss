@@ -90,11 +90,32 @@
       justify-content: center;
       border-radius: 10px;
       padding: 0;
+      position: relative;
       img {
         width: 100%;
         object-fit: cover;
-        .hidden {
-          display: none;
+        display: none;
+        &.active {
+          display: block;
+        }
+      }
+      .btn {
+        border-radius: 50%;
+        border: 2px solid #d6dcf4;
+        position: absolute;
+        cursor: pointer;
+        background-color: #eff1f3;
+        padding: 5px;
+        z-index: 1;
+        &.left {
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &.right {
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
         }
       }
     }

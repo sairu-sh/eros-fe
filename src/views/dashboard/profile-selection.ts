@@ -12,10 +12,9 @@ const profileCard = document.getElementById("profile-card") as HTMLDivElement;
 
 profilesContainer.addEventListener("click", async (e) => {
   const profile = e.target as HTMLDivElement;
-  if (profile.classList.contains("profile")) {
-    const profileId: Number = Number(
-      (e.target as HTMLDivElement).getAttribute("data-id")
-    );
+  if (profile instanceof HTMLImageElement) {
+    const profileDiv = profile.closest(".profile") as HTMLDivElement;
+    const profileId: Number = Number(profileDiv.getAttribute("data-id"));
 
     const details = await getDetails(profileId);
     if (details) {
@@ -39,7 +38,7 @@ async function getDetails(id: Number) {
 }
 
 function renderDetails(details: IDetails) {
-  console.log(details.dob);
+  console.log(details);
   emptyProfile?.classList.add("hidden");
   profileCard.innerHTML = "";
   const name = document.createElement("div");
@@ -54,6 +53,49 @@ function renderDetails(details: IDetails) {
           alt="send-request"
         />
       </button>`;
+
+  imageLength = details.imageurls.length;
+  const images = document.createElement("div");
+  images.classList.add("images");
+  images.setAttribute("id", "images");
+  const img = document.createElement("img");
+  img.classList.add("active");
+  img.src = details.imageurls[0];
+  img.setAttribute("data-id", "0");
+  images.appendChild(img);
+
+  details.imageurls.forEach((image, index) => {
+    if (index > 0) {
+      const img = document.createElement("img");
+      img.src = image;
+      img.setAttribute("data-id", `${index}`);
+      images.appendChild(img);
+    }
+  });
+
+  const btnRight = document.createElement("button");
+  btnRight.classList.add("btn", "right");
+  btnRight.innerHTML = `<i class="ph ph-arrow-fat-line-right"></i>`;
+
+  const btnLeft = document.createElement("button");
+  btnLeft.classList.add("btn", "left");
+  btnLeft.innerHTML = `<i class="ph ph-arrow-fat-line-left"></i>`;
+
+  images.appendChild(btnRight);
+  images.appendChild(btnLeft);
+
+  const leftBtn = images.querySelector(".ph-arrow-fat-line-left");
+  const rightBtn = images.querySelector(".ph-arrow-fat-line-right");
+
+  leftBtn?.addEventListener("click", () => {
+    console.log("left");
+    changeImages(-1);
+  });
+
+  rightBtn?.addEventListener("click", () => {
+    console.log("right");
+    changeImages(1);
+  });
 
   const about = document.createElement("div");
   about.innerHTML = `
@@ -90,7 +132,9 @@ function renderDetails(details: IDetails) {
   });
   interests.appendChild(interestDiv);
 
-  profileCard.append(name, about, essentials, basics, interests);
+  profileCard.append(name, images, about, essentials, basics, interests);
+
+  changeImages(details.imageurls.length);
 }
 
 function getZodiacSign(dob: Date): string {
@@ -154,4 +198,41 @@ function getZodiacSign(dob: Date): string {
   } else {
     return "Pisces";
   }
+}
+
+let imageLength = 0;
+let currentImage = 0;
+function changeImages(direction: number) {
+  if (direction === -1) {
+    if (currentImage === 0) {
+      return;
+    } else {
+      currentImage--;
+      removeActive();
+    }
+  } else if (direction === 1) {
+    if (currentImage === imageLength - 1) {
+      return;
+    } else {
+      currentImage++;
+      console.log(currentImage);
+      removeActive();
+    }
+  }
+}
+
+function removeActive() {
+  const images = document.getElementById("images") as HTMLDivElement;
+  const imagesChildren = images?.children;
+  const imagesArray = Array.from(imagesChildren);
+  console.log(imagesChildren);
+
+  imagesArray.forEach((image) => {
+    if (image instanceof HTMLImageElement) {
+      image.classList.remove("active");
+      if (image.getAttribute("data-id") === `${currentImage}`) {
+        image.classList.add("active");
+      }
+    }
+  });
 }
