@@ -1,6 +1,7 @@
 import axios from "axios";
 import { IDetails } from "../../interfaces/user-details.interface";
 import { calculateAge } from "../../util/ageCalculator.util";
+import { gotoHome } from "./navbar";
 
 const http = axios.create({
   baseURL: "http://localhost:8000/",
@@ -36,9 +37,12 @@ async function getDetails(id: Number) {
   } catch (e) {}
 }
 
+const requestContainer = document.getElementById("active-container");
+
 async function renderDetails(details: IDetails) {
   console.log(details);
   emptyProfile?.classList.add("hidden");
+  if (requestContainer) requestContainer.innerHTML = ``;
   profileCard.innerHTML = "";
   const name = document.createElement("div");
   name.classList.add("name");
@@ -153,6 +157,10 @@ async function renderDetails(details: IDetails) {
   interests.appendChild(interestDiv);
 
   profileCard.append(name, images, about, essentials, basics, interests);
+
+  requestContainer?.appendChild(profileCard);
+
+  gotoHome();
 
   changeImages(details.imageurls.length);
 }

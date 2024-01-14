@@ -24,3 +24,9 @@ navBar?.addEventListener("click", (e) => {
     if (activeNav === "requests") renderRequests();
   }
 });
+
+export const gotoHome = () => {
+  activeNav = "home";
+  removeActive();
+  navList[0].classList.add("active");
+};

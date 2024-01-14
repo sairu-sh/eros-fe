@@ -17,11 +17,12 @@ export const renderRequests = async () => {
         },
         method: "GET",
       });
+      console.log(response);
       if (response.status === 200 && response.data) {
         response.data.forEach((data: IReqData) => {
-          console.log(data);
           const namePlate = document.createElement("div");
           namePlate.classList.add("nameplate");
+          namePlate.setAttribute("data-id", `${data.id}`);
           const name = document.createElement("p");
           name.innerHTML = data.fullname;
           const image = document.createElement("img");
@@ -34,8 +35,32 @@ export const renderRequests = async () => {
           declineBtn.innerHTML = ` <i class="ph ph-x"></i>`;
           namePlate.append(image, name, acceptBtn, declineBtn);
           requestContainer.appendChild(namePlate);
+
+          namePlate.addEventListener("click", (e) => {
+            handleRequest(e);
+          });
         });
       }
     } catch (e) {}
   }
 };
+
+async function handleRequest(e: MouseEvent) {
+  const button = e.target as HTMLButtonElement;
+  if (button instanceof HTMLButtonElement) {
+    const id = Number(button.closest(".nameplate")?.getAttribute("data-id"));
+    const result = await http({
+      url: "/request/",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      data: {
+        id,
+      },
+      method: "DELETE",
+    });
+    if (result.status === 200) {
+      button.closest(".nameplate")?.remove();
+    }
+  }
+}

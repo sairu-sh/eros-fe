@@ -644,6 +644,7 @@ nav .nav-bar ul li.active a::after {
   width: 4rem;
   height: 4rem;
   margin-left: 20px;
+  cursor: pointer;
 }
 .selected-profile .nameplate p {
   margin-left: 20px;
