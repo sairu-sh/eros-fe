@@ -11,22 +11,22 @@
       <div class="logo">EROS</div>
       <div class="nav-bar" id="nav-bar">
         <ul>
-          <li class="active">
+          <li class="active" id="home">
             <a href="#"
               ><img src="./../../assets/images/world.png" alt="profile"
             /></a>
           </li>
-          <li>
+          <li id="requests">
             <a href="#"
               ><img src="./../../assets/images/request.png" alt="request"
             /></a>
           </li>
-          <li>
+          <li id="chat">
             <a href="#">
               <img src="./../../assets/images/chat.png" alt="chat"
             /></a>
           </li>
-          <li>
+          <li id="me">
             <a href="#"
               ><img src="./../../assets/images/profile.png" alt="profile"
             /></a>
@@ -37,14 +37,76 @@
     <div class="hero">
       <div class="profiles" id="profiles"></div>
       <div class="selected-profile">
-        <div class="empty-profile" id="empty-profile">
+        <div class="empty-profile hidden" id="empty-profile">
           <img src="./../../assets/images/cupid.png" alt="cupid" />
           <p>
             Love connections start with a click! <br />Explore profiles and let
             Cupid guide you.
           </p>
         </div>
-        <div class="profile-card" id="profile-card"></div>
+        <div class="profile-card" id="profile-card">
+          <div class="name">
+            <h3>Sairush Tamang <span style="margin-left: 20px">22</span></h3>
+            <button class="request">
+              <img
+                src="./../../assets/images/send-request.png"
+                alt="send-request"
+              />
+            </button>
+          </div>
+          <div class="images">
+            <img
+              src="./../../assets/images/cupid.png"
+              alt="cupid"
+              class="hidden"
+            />
+            <img
+              src="./../../assets/images/eros.svg"
+              alt="cupid"
+              class="active"
+            />
+            <img
+              src="./../../assets/images/cupid.png"
+              alt="cupid"
+              class="hidden"
+            />
+            <button class="btn right">
+              <i class="ph ph-arrow-fat-line-right"></i>
+            </button>
+            <button class="btn left">
+              <i class="ph ph-arrow-fat-line-left"></i>
+            </button>
+          </div>
+          <div>
+            <h3>About me</h3>
+            <p>
+              Hi this is Sairush. Lorem ipsum dolor sit amet consectetur,
+              adipisicing elit. Facere, totam. Odio quis libero debitis tempore
+              voluptatibus quisquam repellat magnam eius.
+            </p>
+          </div>
+          <div>
+            <h3>Essentials</h3>
+            <p>24 kilometers away</p>
+            <p>Lives in Banepa</p>
+            <p>Male</p>
+          </div>
+          <div>
+            <h3>Basics</h3>
+            <h4>Zodiac</h4>
+            <p>Cancer</p>
+            <h4>Education</h4>
+            <p>KhCE</p>
+          </div>
+          <div>
+            <h3>Interests</h3>
+            <div class="interests">
+              <p>walking</p>
+              <p>cooking</p>
+              <p>sci-fi</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script type="module" src="./main.ts"></script>

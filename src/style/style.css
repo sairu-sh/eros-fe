@@ -599,6 +599,7 @@ nav .nav-bar ul li.active a::after {
   justify-content: center;
   border-radius: 10px;
   padding: 0;
+  position: relative;
 }
 .selected-profile .profile-card .images img {
   width: 100%;
@@ -607,6 +608,25 @@ nav .nav-bar ul li.active a::after {
 }
 .selected-profile .profile-card .images img.active {
   display: block;
+}
+.selected-profile .profile-card .images .btn {
+  border-radius: 50%;
+  border: 2px solid #d6dcf4;
+  position: absolute;
+  cursor: pointer;
+  background-color: #eff1f3;
+  padding: 5px;
+  z-index: 1;
+}
+.selected-profile .profile-card .images .btn.left {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.selected-profile .profile-card .images .btn.right {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .hero {
