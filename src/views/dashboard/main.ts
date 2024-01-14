@@ -1,5 +1,6 @@
 import "./../../style/style.css";
 import { IProfile } from "../../interfaces/profile.interface";
+import { calculateAge } from "../../util/ageCalculator.util";
 import axios from "axios";
 
 if ("geolocation" in navigator) {
@@ -39,12 +40,12 @@ async function updateUserLocation(latitude: number, longitude: number) {
     });
     if (response.status === 200) {
       console.log("location updated successfully");
-      getProfiles();
     }
   } catch (e) {
     console.error("location update failed");
   }
 }
+getProfiles();
 
 async function getProfiles() {
   try {
@@ -68,7 +69,6 @@ function renderProfiles(profiles: IProfile[]) {
   profiles.forEach((profile) => {
     const birthDate: Date = new Date(profile.dob);
     const age = calculateAge(birthDate);
-
     const profileElement = document.createElement("div");
     profileElement.classList.add("profile");
     profileElement.setAttribute("data-id", `${profile.uid}`);
@@ -83,19 +83,4 @@ function renderProfiles(profiles: IProfile[]) {
     profileElement.appendChild(profileTag);
     profileContainer?.appendChild(profileElement);
   });
-}
-
-function calculateAge(birthDate: Date) {
-  const currentDate = new Date();
-  let age = currentDate.getFullYear() - birthDate.getFullYear();
-  const monthDiff = currentDate.getMonth() - birthDate.getMonth();
-
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && currentDate.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
-
-  return age;
 }
