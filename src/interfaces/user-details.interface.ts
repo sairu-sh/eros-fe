@@ -1,4 +1,5 @@
 export interface IDetails {
+  id: number;
   bio: string;
   city: string;
   college: string;

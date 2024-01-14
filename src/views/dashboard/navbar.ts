@@ -1,3 +1,5 @@
+import { renderRequests } from "./requests";
+
 const navBar = document.getElementById("nav-bar") as HTMLDivElement;
 
 const navList = navBar?.querySelectorAll("li");
@@ -19,5 +21,6 @@ navBar?.addEventListener("click", (e) => {
     removeActive();
     parentLi?.classList.add("active");
     activeNav = parentLi?.getAttribute("id") as string;
+    if (activeNav === "requests") renderRequests();
   }
 });
