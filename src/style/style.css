@@ -628,9 +628,28 @@ nav .nav-bar ul li.active a::after {
   top: 50%;
   transform: translateY(-50%);
 }
-.selected-profile .nameplate {
+.selected-profile .request-container {
+  overflow-y: scroll;
+  width: 100%;
+  margin-left: 15px;
+}
+.selected-profile .request-container::-webkit-scrollbar {
+  width: 5px;
+  height: 100%;
+}
+.selected-profile .request-container::-webkit-scrollbar-track {
+  background: #d6dcf4;
+  border-radius: 15px;
+  margin-block: 1.5rem;
+}
+.selected-profile .request-container::-webkit-scrollbar-thumb {
+  background: #cdd5f3;
+  max-height: 50px;
+  border-radius: 15px;
+}
+.selected-profile .request-container .nameplate {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 95%;
   margin: 10px 0;
   background-color: white;
@@ -638,31 +657,31 @@ nav .nav-bar ul li.active a::after {
   padding: 5px;
   align-items: center;
 }
-.selected-profile .nameplate img {
+.selected-profile .request-container .nameplate img {
   border: 3px solid black;
   border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   margin-left: 20px;
   cursor: pointer;
 }
-.selected-profile .nameplate p {
+.selected-profile .request-container .nameplate p {
   margin-left: 20px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 800;
 }
-.selected-profile .nameplate .btn {
+.selected-profile .request-container .nameplate .btn {
   border: 3px solid black;
   border-radius: 50%;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
 }
-.selected-profile .nameplate .btn.decline-btn {
+.selected-profile .request-container .nameplate .btn.decline-btn {
   background-color: red;
   margin-left: 20px;
 }
-.selected-profile .nameplate .btn.accept-btn {
+.selected-profile .request-container .nameplate .btn.accept-btn {
   background-color: #93c572;
   margin-left: 70px;
 }
