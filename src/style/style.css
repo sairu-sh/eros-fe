@@ -628,6 +628,44 @@ nav .nav-bar ul li.active a::after {
   top: 50%;
   transform: translateY(-50%);
 }
+.selected-profile .nameplate {
+  display: flex;
+  justify-content: flex-start;
+  width: 95%;
+  margin: 10px 0;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  align-items: center;
+}
+.selected-profile .nameplate img {
+  border: 3px solid black;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.selected-profile .nameplate p {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: 800;
+}
+.selected-profile .nameplate .btn {
+  border: 3px solid black;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+}
+.selected-profile .nameplate .btn.decline-btn {
+  background-color: red;
+  margin-left: 20px;
+}
+.selected-profile .nameplate .btn.accept-btn {
+  background-color: #93c572;
+  margin-left: 70px;
+}
 
 .hero {
   position: absolute;

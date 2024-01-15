@@ -1,6 +1,7 @@
 import axios from "axios";
 import { IDetails } from "../../interfaces/user-details.interface";
 import { calculateAge } from "../../util/ageCalculator.util";
+import { gotoHome } from "./navbar";
 
 const http = axios.create({
   baseURL: "http://localhost:8000/",
@@ -15,7 +16,6 @@ profilesContainer.addEventListener("click", async (e) => {
   if (profile instanceof HTMLImageElement) {
     const profileDiv = profile.closest(".profile") as HTMLDivElement;
     const profileId: Number = Number(profileDiv.getAttribute("data-id"));
-
     const details = await getDetails(profileId);
     if (details) {
       renderDetails(details);
@@ -37,22 +37,46 @@ async function getDetails(id: Number) {
   } catch (e) {}
 }
 
-function renderDetails(details: IDetails) {
+const requestContainer = document.getElementById("active-container");
+
+async function renderDetails(details: IDetails) {
   console.log(details);
   emptyProfile?.classList.add("hidden");
+  if (requestContainer) requestContainer.innerHTML = ``;
   profileCard.innerHTML = "";
   const name = document.createElement("div");
   name.classList.add("name");
   const age = calculateAge(new Date(details.dob));
+  const fullname = document.createElement("h3");
+  fullname.innerHTML = `<h3>${details.fullname}<span style="margin-left: 20px">${age}</span></h3>`;
+  name.appendChild(fullname);
 
-  name.innerHTML = `
-      <h3>${details.fullname}<span style="margin-left: 20px">${age}</span></h3>
-      <button class="request">
-        <img
-          src="./../../assets/images/send-request.png"
-          alt="send-request"
-        />
+  //check to see if a request has already been sent or not
+  const requestChecker = await http({
+    url: `/request/${details.id}`,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    method: "GET",
+  });
+
+  if (requestChecker.status === 200 && requestChecker.data)
+    name.innerHTML += `      
+      <button class="request" id="cancel-request">
+        cancel
       </button>`;
+  else
+    name.innerHTML += `
+      <button class="request" id="send-request">
+      <img
+      src="./../../assets/images/send-request.png"
+      alt="send-request"
+    />
+      </button>`;
+
+  name.addEventListener("click", (e) => {
+    toggleRequest(e, details.id);
+  });
 
   imageLength = details.imageurls.length;
   const images = document.createElement("div");
@@ -134,7 +158,11 @@ function renderDetails(details: IDetails) {
 
   profileCard.append(name, images, about, essentials, basics, interests);
 
-  changeImages(details.imageurls.length);
+  requestContainer?.appendChild(profileCard);
+
+  gotoHome();
+
+  // changeImages(details.imageurls.length);
 }
 
 function getZodiacSign(dob: Date): string {
@@ -235,4 +263,44 @@ function removeActive() {
       }
     }
   });
+}
+
+async function toggleRequest(e: MouseEvent, id: Number) {
+  const button = e.target as HTMLButtonElement;
+  if (button instanceof HTMLButtonElement) {
+    const result = await http({
+      url: "/request/",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      data: {
+        id,
+      },
+      method: "DELETE",
+    });
+    if (result.status === 200) {
+      button.setAttribute("id", "send-request");
+      button.innerHTML = `
+      <img
+      src="./../../assets/images/send-request.png"
+      alt="send-request"
+    />`;
+    }
+  } else if (e.target instanceof HTMLImageElement) {
+    const button = e.target.closest(".request") as HTMLButtonElement;
+    const result = await http({
+      url: "/request/",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      data: {
+        id,
+      },
+      method: "POST",
+    });
+    if (result.status === 200) {
+      button.setAttribute("id", "cancel-request");
+      button.innerHTML = `Cancel`;
+    }
+  }
 }

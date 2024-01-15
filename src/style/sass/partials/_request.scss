@@ -1,0 +1,38 @@
+.nameplate {
+  display: flex;
+  justify-content: flex-start;
+  width: 95%;
+  margin: 10px 0;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px;
+  align-items: center;
+  img {
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  p {
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: 800;
+  }
+  .btn {
+    border: 3px solid black;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    cursor: pointer;
+    &.decline-btn {
+      background-color: red;
+      margin-left: 20px;
+    }
+    &.accept-btn {
+      background-color: #93c572;
+      margin-left: 70px;
+    }
+  }
+}
