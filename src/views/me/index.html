@@ -6,6 +6,61 @@
     <title>Document</title>
   </head>
   <body>
+    <form class="container" id="profileForm">
+      <div class="media" id="media">
+        <div class="image-holder">
+          <img src="./../../assets/images/eros.svg" alt="cupid" />
+          <button class="btn remover" id="remover">
+            <i class="ph ph-minus"></i>
+          </button>
+        </div>
+        <div class="image-holder">
+          <img src="./../../assets/images/eros.svg" alt="cupid" />
+          <button class="btn remover" id="remover">
+            <i class="ph ph-minus"></i>
+          </button>
+        </div>
+        <div class="image-holder">
+          <img src="./../../assets/images/eros.svg" alt="cupid" />
+          <button class="btn remover" id="remover">
+            <i class="ph ph-minus"></i>
+          </button>
+        </div>
+        <div class="image-holder empty">
+          <button class="btn adder" id="adder">
+            <i class="ph ph-plus"></i>
+          </button>
+        </div>
+        <div class="image-holder empty">
+          <button class="btn adder" id="adder">
+            <i class="ph ph-plus"></i>
+          </button>
+        </div>
+        <div class="image-holder empty">
+          <button class="btn adder" id="adder">
+            <i class="ph ph-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="about" id="about">
+        <h3>About Me</h3>
+        <input type="text" placeholder="About Me" id="about-me" />
+      </div>
+      <div class="interests" id="interests">
+        <h3>Interests</h3>
+        <p>walking</p>
+        <p>yoga</p>
+        <p>coffee</p>
+      </div>
+      <div class="basics" id="basics">
+        <h3>Basics</h3>
+        <h4>Where I live</h4>
+        <input type="text" placeholder="city" id="city" />
+        <h4>My education</h4>
+        <input type="text" placeholder="college" id="college" />
+      </div>
+    </form>
+
     <script type="module" src="./main.ts"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </body>

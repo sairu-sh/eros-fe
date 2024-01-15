@@ -9,8 +9,6 @@ const form = document.getElementById("form-control");
 
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
-
-  // Assuming you have an input field with the id "image-uploader"
   const input = document.getElementById("image-uploader") as HTMLInputElement;
   const files = input?.files;
 
