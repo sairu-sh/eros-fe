@@ -742,6 +742,105 @@ nav .nav-bar ul li.active a::after {
   pointer-events: none;
 }
 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.media {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.image-holder {
+  position: relative;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f8f8f8;
+  min-height: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.image-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.image-holder .btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.image-holder .btn:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.image-holder.empty {
+  border: 2px dashed #ddd;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+}
+
+.about,
+.interests,
+.basics {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.about h3,
+.interests h3,
+.basics h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+.about input,
+.about textarea,
+.interests input,
+.interests textarea,
+.basics input,
+.basics textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.interests h3 {
+  flex-basis: 100%;
+}
+.interests p {
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.submit-btn {
+  margin: 20px;
+  padding: 5px;
+}
+
 .hidden {
   display: none;
 }
