@@ -19,6 +19,8 @@ export const renderRequests = async () => {
       requestContainer.innerHTML = ``;
       console.log(response);
       if (response.status === 200 && response.data) {
+        const reqContainer = document.createElement("div");
+        reqContainer.classList.add("request-container");
         if (response.data.length === 0) {
           const noRequest = document.createElement("p");
           noRequest.classList.add("no-request");
@@ -41,12 +43,13 @@ export const renderRequests = async () => {
           declineBtn.classList.add("btn", "decline-btn");
           declineBtn.innerHTML = ` <i class="ph ph-x"></i>`;
           namePlate.append(image, name, acceptBtn, declineBtn);
-          requestContainer.appendChild(namePlate);
+          reqContainer.appendChild(namePlate);
 
           namePlate.addEventListener("click", (e) => {
             handleRequest(e);
           });
         });
+        requestContainer.appendChild(reqContainer);
       }
     } catch (e) {}
   }
