@@ -36,13 +36,16 @@ export const renderRequests = async () => {
           name.innerHTML = data.fullname;
           const image = document.createElement("img");
           image.src = data.imageUrl;
+          const buttons = document.createElement("div");
+          buttons.classList.add("btn-container");
           const acceptBtn = document.createElement("button");
           acceptBtn.classList.add("btn", "accept-btn");
           acceptBtn.innerHTML = ` <i class="ph ph-check"></i>`;
           const declineBtn = document.createElement("button");
           declineBtn.classList.add("btn", "decline-btn");
           declineBtn.innerHTML = ` <i class="ph ph-x"></i>`;
-          namePlate.append(image, name, acceptBtn, declineBtn);
+          buttons.append(acceptBtn, declineBtn);
+          namePlate.append(image, name, buttons);
           reqContainer.appendChild(namePlate);
 
           namePlate.addEventListener("click", (e) => {
@@ -57,8 +60,31 @@ export const renderRequests = async () => {
 
 async function handleRequest(e: MouseEvent) {
   const button = (e.target as HTMLElement).closest(".btn") as HTMLButtonElement;
+  const id = Number(button.closest(".nameplate")?.getAttribute("data-id"));
+
   if (button instanceof HTMLButtonElement) {
-    const id = Number(button.closest(".nameplate")?.getAttribute("data-id"));
+    if (button.classList.contains("accept-btn")) {
+      const result = await http({
+        url: "/match/",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        data: {
+          id,
+        },
+        method: "POST",
+      });
+
+      if (result.status === 200) {
+        const namePlate = button.closest(".nameplate") as HTMLDivElement;
+        if (namePlate) {
+          namePlate.innerHTML = `You just matched!`;
+        }
+        setTimeout(() => {
+          namePlate?.remove();
+        }, 2000);
+      }
+    }
     const result = await http({
       url: "/request/",
       headers: {

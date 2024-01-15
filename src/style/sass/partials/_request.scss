@@ -1,5 +1,7 @@
 .request-container {
   overflow-y: scroll;
+  width: 100%;
+  margin-left: 15px;
   &::-webkit-scrollbar {
     width: 5px;
     height: 100%;
@@ -16,7 +18,7 @@
   }
   .nameplate {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 95%;
     margin: 10px 0;
     background-color: white;
@@ -26,21 +28,21 @@
     img {
       border: 3px solid black;
       border-radius: 50%;
-      width: 4rem;
-      height: 4rem;
+      width: 3rem;
+      height: 3rem;
       margin-left: 20px;
       cursor: pointer;
     }
     p {
       margin-left: 20px;
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 800;
     }
     .btn {
       border: 3px solid black;
       border-radius: 50%;
-      width: 3.5rem;
-      height: 3.5rem;
+      width: 2rem;
+      height: 2rem;
       cursor: pointer;
       &.decline-btn {
         background-color: red;
