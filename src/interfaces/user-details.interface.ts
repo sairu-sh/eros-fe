@@ -7,7 +7,7 @@ export interface IDetails {
   dob: Date;
   fullname: string;
   gender: string;
-  interests: string[];
+  interests: { id: number; interest: string }[];
   distance: number;
   imageurls: string[];
 }

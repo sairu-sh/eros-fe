@@ -34,6 +34,8 @@ navBar?.addEventListener("click", (e) => {
       Cupid guide you.
     </p>
   </div>`;
+
+    if (activeNav === "me") window.location.href = "/views/me/";
   }
 });
 
