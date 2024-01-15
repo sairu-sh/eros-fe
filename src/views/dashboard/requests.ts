@@ -8,7 +8,6 @@ const http = axios.create({
 const requestContainer = document.getElementById("active-container");
 export const renderRequests = async () => {
   if (requestContainer) {
-    requestContainer.innerHTML = ``;
     try {
       const response = await http({
         url: "/request/",
@@ -17,8 +16,16 @@ export const renderRequests = async () => {
         },
         method: "GET",
       });
+      requestContainer.innerHTML = ``;
       console.log(response);
       if (response.status === 200 && response.data) {
+        if (response.data.length === 0) {
+          const noRequest = document.createElement("p");
+          noRequest.classList.add("no-request");
+          noRequest.innerHTML = "You have no Requests";
+          requestContainer.appendChild(noRequest);
+          return;
+        }
         response.data.forEach((data: IReqData) => {
           const namePlate = document.createElement("div");
           namePlate.classList.add("nameplate");
@@ -46,7 +53,7 @@ export const renderRequests = async () => {
 };
 
 async function handleRequest(e: MouseEvent) {
-  const button = e.target as HTMLButtonElement;
+  const button = (e.target as HTMLElement).closest(".btn") as HTMLButtonElement;
   if (button instanceof HTMLButtonElement) {
     const id = Number(button.closest(".nameplate")?.getAttribute("data-id"));
     const result = await http({

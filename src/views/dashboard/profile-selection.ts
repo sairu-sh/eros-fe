@@ -162,7 +162,7 @@ async function renderDetails(details: IDetails) {
 
   gotoHome();
 
-  changeImages(details.imageurls.length);
+  // changeImages(details.imageurls.length);
 }
 
 function getZodiacSign(dob: Date): string {

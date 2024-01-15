@@ -4,6 +4,10 @@ const navBar = document.getElementById("nav-bar") as HTMLDivElement;
 
 const navList = navBar?.querySelectorAll("li");
 
+const activeContainer = document.getElementById(
+  "active-container"
+) as HTMLDivElement;
+
 let activeNav = "home";
 
 function removeActive() {
@@ -22,6 +26,14 @@ navBar?.addEventListener("click", (e) => {
     parentLi?.classList.add("active");
     activeNav = parentLi?.getAttribute("id") as string;
     if (activeNav === "requests") renderRequests();
+    if (activeNav === "home")
+      activeContainer.innerHTML = `<div class="empty-profile" id="empty-profile">
+    <img src="./../../assets/images/cupid.png" alt="cupid" />
+    <p>
+      Love connections start with a click! <br />Explore profiles and let
+      Cupid guide you.
+    </p>
+  </div>`;
   }
 });
 
