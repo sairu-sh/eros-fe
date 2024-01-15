@@ -4,24 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./../../style/style.css" />
   </head>
   <body>
     <nav>
       <div class="logo">EROS</div>
       <div class="nav-bar" id="nav-bar">
         <ul>
-          <li class="active" id="home">
+          <li id="home">
             <a href="#"
               ><img src="./../../assets/images/world.png" alt="profile"
             /></a>
           </li>
-          <li id="requests">
-            <a href="#"
-              ><img src="./../../assets/images/request.png" alt="request"
-            /></a>
-          </li>
-          <li id="chat">
+          <li id="chat" class="active">
             <a href="#">
               <img src="./../../assets/images/chat.png" alt="chat"
             /></a>
@@ -34,22 +28,25 @@
         </ul>
       </div>
     </nav>
-    <div class="hero">
-      <div class="profiles" id="profiles"></div>
-      <div class="selected-profile" id="active-container">
-        <div class="empty-profile" id="empty-profile">
-          <img src="./../../assets/images/cupid.png" alt="cupid" />
-          <p>
-            Love connections start with a click! <br />Explore profiles and let
-            Cupid guide you.
-          </p>
-        </div>
-        <div class="profile-card" id="profile-card"></div>
+    <div class="matches" id="matches">
+      <div class="match">
+        <img src="./../../assets/images/eros.svg" alt="1" />
+        <p>sairush Tamang</p>
       </div>
+      <div class="match">
+        <img src="./../../assets/images/eros.svg" alt="1" />
+        <p>sairush Tamang</p>
+      </div>
+    </div>
+    <div class="chat-container">
+      <div class="chat-box" id="chat-box"></div>
+      <form action="" class="chat">
+        <input type="text" class="chat-input" />
+        <button type="submit"><i class="ph ph-paper-plane-tilt"></i></button>
+      </form>
     </div>
     <script type="module" src="./main.ts"></script>
     <script type="module" src="./navbar.ts"></script>
-    <script type="module" src="./profile-selection.ts"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </body>
 </html>

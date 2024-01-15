@@ -36,6 +36,7 @@ navBar?.addEventListener("click", (e) => {
   </div>`;
 
     if (activeNav === "me") window.location.href = "/views/me/";
+    if (activeNav === "chat") window.location.href = "/views/chat/";
   }
 });
 

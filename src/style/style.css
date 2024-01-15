@@ -841,6 +841,90 @@ nav .nav-bar ul li.active a::after {
   padding: 5px;
 }
 
+.matches {
+  display: flex;
+  position: fixed;
+  top: 20px;
+  left: 12%;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  justify-content: flex-start;
+  background-color: #ecf0f1;
+  border: 2px solid black;
+  border-radius: 15px;
+  overflow-y: scroll;
+  height: 90vh;
+  width: 20%;
+}
+
+.match {
+  text-align: center;
+  border-bottom: 2px solid gray;
+}
+.match img {
+  cursor: pointer;
+  width: 40px;
+  border-radius: 50%;
+}
+.match p {
+  margin: 10px 0;
+}
+
+.chat-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 20px;
+  width: 50%;
+  position: fixed;
+  right: 2%;
+}
+
+.chat-box {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  height: 80vh;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.chat-box .self,
+.chat-box .opposite {
+  padding: 5px;
+  max-width: 50%;
+  border-radius: 10px;
+}
+.chat-box .self {
+  align-self: flex-end;
+  margin-right: 10px;
+  border: 2px solid slateblue;
+  background-color: skyblue;
+}
+.chat-box .opposite {
+  align-self: flex-start;
+  margin-left: 10px;
+  border: 2px solid tomato;
+  background-color: beige;
+}
+
+.chat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #bdc3c7;
+}
+.chat input {
+  flex-grow: 1;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
 .hidden {
   display: none;
 }
