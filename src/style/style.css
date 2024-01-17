@@ -350,53 +350,87 @@ li {
 }
 
 .registration-form {
-  padding-bottom: 50px;
-}
-.registration-form .container {
+  background-color: #f4f4f4;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  min-height: 100vh;
 }
-.registration-form .container h2 {
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-.registration-form .container .user-detail {
+
+h2 {
+  color: #333;
+}
+
+form {
+  text-align: left;
+}
+
+fieldset {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.radio-container {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 60%;
+  margin-bottom: 15px;
+  justify-content: flex-start;
 }
-.registration-form .container .user-detail fieldset {
-  background-color: #fcf6e6;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 20px;
-  border: 2px solid black;
-  border-radius: 10px;
+.radio-container input {
+  margin-right: 10px;
 }
-.registration-form .container .user-detail fieldset label {
-  margin: 20px 0 10px;
-}
-.registration-form .container .user-detail fieldset .radio-container {
-  display: flex;
-}
-.registration-form .container .user-detail fieldset .radio-container input {
-  margin: 0 10px 0 20px;
-}
-.registration-form .container .user-detail fieldset .interests {
+
+.interests {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 10px;
 }
-.registration-form .container .user-detail fieldset .interests p {
+.interests p {
   cursor: pointer;
-  border: 2px solid chocolate;
-  border-radius: 5px;
-  padding: 5px;
 }
-.registration-form .container .user-detail fieldset .interests p.active {
-  background-color: rgb(249, 90, 90);
+.interests p.active {
+  background-color: lightblue;
+}
+.interests label {
+  margin-right: 10px;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
 }
 
 .form-control {
@@ -839,6 +873,90 @@ nav .nav-bar ul li.active a::after {
 .submit-btn {
   margin: 20px;
   padding: 5px;
+}
+
+.matches {
+  display: flex;
+  position: fixed;
+  top: 20px;
+  left: 12%;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  justify-content: flex-start;
+  background-color: #ecf0f1;
+  border: 2px solid black;
+  border-radius: 15px;
+  overflow-y: scroll;
+  height: 90vh;
+  width: 20%;
+}
+
+.match {
+  text-align: center;
+  border-bottom: 2px solid gray;
+}
+.match img {
+  cursor: pointer;
+  width: 40px;
+  border-radius: 50%;
+}
+.match p {
+  margin: 10px 0;
+}
+
+.chat-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 20px;
+  width: 50%;
+  position: fixed;
+  right: 2%;
+}
+
+.chat-box {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  height: 80vh;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.chat-box .self,
+.chat-box .opposite {
+  padding: 5px;
+  max-width: 50%;
+  border-radius: 10px;
+}
+.chat-box .self {
+  align-self: flex-end;
+  margin-right: 10px;
+  border: 2px solid slateblue;
+  background-color: skyblue;
+}
+.chat-box .opposite {
+  align-self: flex-start;
+  margin-left: 10px;
+  border: 2px solid tomato;
+  background-color: beige;
+}
+
+.chat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #bdc3c7;
+}
+.chat input {
+  flex-grow: 1;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
 }
 
 .hidden {
