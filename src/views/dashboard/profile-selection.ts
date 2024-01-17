@@ -151,7 +151,7 @@ async function renderDetails(details: IDetails) {
 
   details.interests.forEach((interest) => {
     interestDiv.innerHTML += `
-    <p>${interest}</p>
+    <p>${interest.interest}</p>
     `;
   });
   interests.appendChild(interestDiv);

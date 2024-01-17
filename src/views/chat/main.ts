@@ -36,15 +36,23 @@ async function renderMatches(data: IMatch[]) {
       matchContainer.appendChild(container);
     });
   }
+  let reloadChat;
+  clearInterval(reloadChat);
   matchContainer?.addEventListener("click", (e) => {
     loadChat(e);
+    reloadChat = setInterval(() => {
+      loadChat(e);
+      console.log("hi");
+    }, 30000);
   });
 }
+
+let secondaryUser: number;
 
 async function loadChat(e: MouseEvent) {
   const img = e.target as HTMLImageElement;
   const parent = img.closest(".match");
-  const secondaryUser = Number(parent?.getAttribute("data-id"));
+  if (parent) secondaryUser = Number(parent?.getAttribute("data-id"));
   const response = await http({
     url: `/chats/${secondaryUser}`,
     method: "GET",
@@ -70,3 +78,34 @@ async function loadChat(e: MouseEvent) {
     });
   }
 }
+
+const chatInput = document.getElementById("chat-input");
+chatInput?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const inputElement = chatInput.querySelector(
+    ".chat-input"
+  ) as HTMLInputElement;
+  const content = inputElement?.value;
+  const response = await http({
+    url: "/chats/",
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    data: {
+      content,
+      id: secondaryUser,
+    },
+  });
+
+  if (response.status === 200) {
+    inputElement.value = "";
+    const chatBox = document.getElementById("chat-box");
+    if (chatBox) {
+      const p = document.createElement("p");
+      p.innerHTML = content;
+      p.classList.add("self");
+      chatBox.prepend(p);
+    }
+  }
+});
